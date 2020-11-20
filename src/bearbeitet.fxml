@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView layoutX="40.0" layoutY="35.0" prefHeight="333.0" prefWidth="521.0">
+        <columns>
+          <TableColumn prefWidth="164.0" text="Bearbeiter_id" />
+          <TableColumn prefWidth="174.0" text="ToDo_id" />
+            <TableColumn prefWidth="182.0" text="Arbeitszeit" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
