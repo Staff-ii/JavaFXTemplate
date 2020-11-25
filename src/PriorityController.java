@@ -1,23 +1,26 @@
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import model.Priority;
-
-import javax.swing.text.html.ListView;
-import java.awt.event.MouseEvent;
+import model.Status;
 
 public class PriorityController {
 
-    public ListView prioritryListView;
+    public ListView<Priority> priorityListView;
     public TextField nameTextField;
 
     public void initialize() {
-        prioritryListView.setItems(Priority.getList());
+        priorityListView.setItems(Priority.getList());
     }
 
     public void itemSelected(MouseEvent mouseEvent) {
-        Priority p = prioritryListView.getSelectionModel().getSelectedItem();
-        if(p != null) {
+
+        Priority p = priorityListView.getSelectionModel().getSelectedItem();
+        if (p!= null){
             nameTextField.setText(p.getName());
         }
+
     }
 
-}
+    }
+

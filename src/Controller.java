@@ -24,12 +24,11 @@ public class Controller {
 
     public void onPriorityClicked(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("priority.fxml"));
-
-            Stage s = new Stage();
-            s.setTitle("Prioritäten");
-            s.setScene(new Scene(root));
-            s.show();
+            Parent root = FXMLLoader.load(getClass().getResource("prioritaet.fxml"));
+            Stage p = new Stage();
+            p.setTitle("Prioritäten");
+            p.setScene(new Scene(root));
+            p.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
