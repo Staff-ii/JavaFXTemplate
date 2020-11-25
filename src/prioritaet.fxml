@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="37.0" layoutY="31.0" prefHeight="334.0" prefWidth="529.0">
-        <columns>
-          <TableColumn prefWidth="528.0" text="Name" />
-        </columns>
-      </TableView>
+      <TextField fx:id="nameTextField" layoutX="307.0" layoutY="31.0" prefHeight="25.0" prefWidth="276.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="31.0" />
+      <Label layoutX="251.0" layoutY="35.0" text="Priorität:" AnchorPane.bottomAnchor="251.0" AnchorPane.topAnchor="35.0" />
+      <ListView fx:id="priorityListView" onMouseClicked="#itemSelected" prefHeight="303.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="419.0" layoutY="264.0" mnemonicParsing="false" text="Abbrechen" />
+      <Button layoutX="503.0" layoutY="264.0" mnemonicParsing="false" text="Speichern" />
    </children>
-</Pane>
+</AnchorPane>
