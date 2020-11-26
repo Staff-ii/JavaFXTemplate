@@ -2,7 +2,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import model.Priority;
-import model.Status;
+//import model.Status;
 
 public class PriorityController {
 

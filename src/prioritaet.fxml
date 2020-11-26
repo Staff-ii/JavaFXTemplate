@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"fx:controller="PriorityController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PriorityController">
    <children>
       <TextField fx:id="nameTextField" layoutX="307.0" layoutY="31.0" prefHeight="25.0" prefWidth="276.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="31.0" />
       <Label layoutX="251.0" layoutY="35.0" text="Priorität:" AnchorPane.bottomAnchor="251.0" AnchorPane.topAnchor="35.0" />
