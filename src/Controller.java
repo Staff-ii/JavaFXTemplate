@@ -24,8 +24,7 @@ public class Controller {
 
     public void onPriorityClicked(ActionEvent actionEvent) {
         try {
-            Parent root = FXMLLoader.
-                    load(getClass().getResource("prioritaet.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("prioritaet.fxml"));
             Stage p = new Stage();
             p.setTitle("Prioritäten");
             p.setScene(new Scene(root));

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import model.db.AbstractDatabase;
 import model.db.MySQLConnector;
 
+import java.sql.DatabaseMetaData;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,6 +18,7 @@ public class Priority {
         this.id = id;
         this. name = name;
     }
+
 
     public int getId() {
         return id;

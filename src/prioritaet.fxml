@@ -6,13 +6,14 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PriorityController">
    <children>
       <TextField fx:id="nameTextField" layoutX="307.0" layoutY="31.0" prefHeight="25.0" prefWidth="276.0" AnchorPane.leftAnchor="307.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="31.0" />
       <Label layoutX="251.0" layoutY="35.0" text="Priorität:" AnchorPane.bottomAnchor="251.0" AnchorPane.topAnchor="35.0" />
-      <ListView fx:id="priorityListView" onMouseClicked="#itemSelected" prefHeight="303.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button layoutX="419.0" layoutY="264.0" mnemonicParsing="false" text="Abbrechen" />
-      <Button layoutX="503.0" layoutY="264.0" mnemonicParsing="false" text="Speichern" />
+      <ListView fx:id="priorityListView" onMouseClicked="#itemSelected" prefHeight="255.0" prefWidth="234.0" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="419.0" layoutY="264.0" mnemonicParsing="false" onAction="#cancelClicked" text="Abbrechen" />
+      <Button layoutX="503.0" layoutY="264.0" mnemonicParsing="false" onAction="#saveClicked" text="Speichern" />
+      <Button layoutX="41.0" layoutY="264.0" mnemonicParsing="false" onAction="#newClicked" text="Neu" />
+      <Button layoutX="144.0" layoutY="264.0" mnemonicParsing="false" onAction="#deleteClicked" text="Löschen" />
    </children>
 </AnchorPane>
