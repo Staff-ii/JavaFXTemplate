@@ -39,7 +39,7 @@ public class PriorityController {
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.close();
     }
-// hallo
+
     public void saveClicked(ActionEvent actionEvent) {
         AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
         if (selectedItem != null) {
@@ -69,6 +69,7 @@ public class PriorityController {
                 throwables.printStackTrace();
             }
         }
+        priorityListView.setItems(Priority.getList());
     }
 
     public void newClicked(ActionEvent actionEvent) {
@@ -96,6 +97,7 @@ public class PriorityController {
                 throwables.printStackTrace();
             }
         }
+        priorityListView.setItems(Priority.getList());
     }
 }
 
