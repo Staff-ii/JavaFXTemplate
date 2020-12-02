@@ -41,17 +41,17 @@ public class PriorityController {
     }
 
     public void saveClicked(ActionEvent actionEvent) {
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345763");
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
         if (selectedItem != null) {
             // update existing Item
             PreparedStatement statement = null;
             try {
-                statement = conn.getConnection().prepareStatement("UPDATE gr4_priority SET description = '"+selectedItem.getName()+"' WHERE priority_id = "+ selectedItem.getId());
+                statement = conn.getConnection().prepareStatement("UPDATE gr1_PRIORITAET SET NAME = '"+selectedItem.getName()+"' WHERE prioritaet_id = "+ selectedItem.getId());
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
             try {
-                statement.executeUpdate();
+                statement.execute();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -59,12 +59,12 @@ public class PriorityController {
             // insert new
             PreparedStatement statement = null;
             try {
-                statement = conn.getConnection().prepareStatement("INSERT INTO gr4_priority (description) VALUES ('"+nameTextField.getText()+"')");
+                statement = conn.getConnection().prepareStatement("INSERT INTO gr1_PRIORITAET (NAME) VALUES ('"+nameTextField.getText()+"')");
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
             try {
-                statement.executeUpdate();
+                statement.execute();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
@@ -78,20 +78,20 @@ public class PriorityController {
     }
 
     public void deleteClicked(ActionEvent actionEvent) {
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345763");
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
 
         if(selectedItem != null) {
             // delete Item
 
             PreparedStatement statement = null;
             try {
-                statement = conn.getConnection().prepareStatement("DELETE FROM gr1_prioritaet WHERE prioritaet_id = "+ selectedItem.getId());
+                statement = conn.getConnection().prepareStatement("DELETE FROM gr1_PRIORITAET WHERE prioritaet_id = "+ selectedItem.getId());
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
 
             try {
-                statement.executeUpdate();
+                statement.execute();
             } catch (SQLException throwables) {
                 throwables.printStackTrace();
             }
