@@ -14,7 +14,8 @@ public class Status {
     public int id;
 
     public Status(int status_id, String name) {
-
+        this.id = status_id;
+        this.name = name;
     }
 
     public int getId() {
