@@ -7,6 +7,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Priority;
+import model.Status;
 
 import java.io.IOException;
 
@@ -44,5 +46,12 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public void initialize() {
+        todoListView.setItems(ToDo.getList());
+        statusComboBox.setItems(Status.getList());
+        priorityComboBox.setItems(Priority.getList());
     }
 }
