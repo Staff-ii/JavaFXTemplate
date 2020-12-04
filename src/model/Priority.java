@@ -19,7 +19,6 @@ public class Priority {
         this. name = name;
     }
 
-
     public int getId() {
         return id;
     }
@@ -44,7 +43,7 @@ public class Priority {
     public static ObservableList<Priority> getList() {
         ObservableList<Priority> list = FXCollections.observableArrayList();
 
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345763");
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
 
         try {
             PreparedStatement statement = conn.getConnection().prepareStatement("SELECT * FROM gr1_PRIORITAET");
