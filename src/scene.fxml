@@ -35,7 +35,7 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ListView fx:id="todoListView" layoutX="2.0" layoutY="100.0" prefHeight="299.0" prefWidth="213.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0" />
+      <ListView fx:id="todoListView" layoutX="2.0" layoutY="100.0" onMouseClicked="#onToDoClicked" prefHeight="299.0" prefWidth="213.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0" />
       <ComboBox fx:id="statusComboBox" layoutX="74.0" layoutY="35.0" prefWidth="150.0" AnchorPane.leftAnchor="74.0" AnchorPane.topAnchor="35.0" />
       <ComboBox fx:id="priorityComboBox" layoutX="342.0" layoutY="35.0" prefWidth="150.0" AnchorPane.rightAnchor="108.0" AnchorPane.topAnchor="35.0" />
       <Label layoutX="24.0" layoutY="39.0" text="Status:" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="39.0" />

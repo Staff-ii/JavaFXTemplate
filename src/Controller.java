@@ -2,13 +2,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Priority;
 import model.Status;
+import model.ToDo;
 
 import java.io.IOException;
 
@@ -21,6 +21,14 @@ public class Controller {
     public TextField todonameTextField;
 
     public Pane contentPane;
+    public TextField nameToDo;
+    public TextArea descriptionToDo;
+    public ComboBox dropDownStatus;
+    public ComboBox dropDownPriority;
+    public Button saveClicked;
+    public Button cancelClicked;
+
+
 
     public void onStatusClicked(ActionEvent actionEvent) {
         try {
@@ -53,5 +61,28 @@ public class Controller {
         todoListView.setItems(ToDo.getList());
         statusComboBox.setItems(Status.getList());
         priorityComboBox.setItems(Priority.getList());
+    }
+
+    public void onToDoClicked(MouseEvent mouseEvent) {
+        ToDo selectedItem = todoListView.getSelectionModel().getSelectedItem();
+
+        if (selectedItem != null) {
+            // stelle die Daten des gewählten ToDos auf der rechten Seite dar
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("todo.fxml"));
+                Pane todoPane =loader.load();
+
+                ToDoController controller = (ToDoController) loader.getController();
+                controller.setToDo(selectedItem);
+
+                contentPane.getChildren().add(todoPane);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
     }
 }
