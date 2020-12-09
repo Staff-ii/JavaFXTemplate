@@ -72,8 +72,7 @@ public class Controller {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("todo.fxml"));
                 Pane todoPane =loader.load();
-
-                ToDoController controller = (ToDoController) loader.getController();
+                    ToDoController controller = (ToDoController) loader.getController();
                 controller.setToDo(selectedItem);
 
                 contentPane.getChildren().add(todoPane);

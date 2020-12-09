@@ -18,7 +18,6 @@ public class ToDo {
         this.id = id;
         this.name = name;
         this.description = description;
-
     }
 
     public int getId() {
