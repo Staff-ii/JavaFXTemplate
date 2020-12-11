@@ -44,32 +44,17 @@ public class PriorityController {
         AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
         if (selectedItem != null) {
             // update existing Item
-            PreparedStatement statement = null;
-            try {
-                statement = conn.getConnection().prepareStatement("UPDATE gr1_PRIORITAET SET NAME = '"+selectedItem.getName()+"' WHERE prioritaet_id = "+ selectedItem.getId());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        } else {
+            selectedItem.setName(nameTextField.getText());
+            selectedItem.update();
+        } else if (nameTextField.getText().length() > 0) {
             // insert new
-            PreparedStatement statement = null;
-            try {
-                statement = conn.getConnection().prepareStatement("INSERT INTO gr1_PRIORITAET (NAME) VALUES ('"+nameTextField.getText()+"')");
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            Priority p = new Priority(0, nameTextField.getText());
+            p.insert();
+            priorityListView.getItems().add(p);
+            priorityListView.getSelectionModel().selectLast();
+            selectedItem = p;
         }
-        priorityListView.setItems(Priority.getList());
+        priorityListView.refresh();
     }
 
     public void newClicked(ActionEvent actionEvent) {
@@ -79,25 +64,17 @@ public class PriorityController {
     }
 
     public void deleteClicked(ActionEvent actionEvent) {
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
 
         if(selectedItem != null) {
             // delete Item
+            selectedItem.delete();
+            priorityListView.getItems().remove(selectedItem);
 
-            PreparedStatement statement = null;
-            try {
-                statement = conn.getConnection().prepareStatement("DELETE FROM gr1_PRIORITAET WHERE prioritaet_id = "+ selectedItem.getId());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            try {
-                statement.execute();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            selectedItem = null;
+            nameTextField.clear();
         }
-        priorityListView.setItems(Priority.getList());
+        //priorityListView.setItems(Priority.getList());
     }
 }
 

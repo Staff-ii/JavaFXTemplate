@@ -11,7 +11,7 @@ public class ToDoController {
 
     private void displayItem() {
         // Hier sollen dei Daten vom "selected" angezeigt werden
-        statusCombobox.setItems();
+
     }
 
 }

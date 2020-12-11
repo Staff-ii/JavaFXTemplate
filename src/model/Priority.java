@@ -2,6 +2,8 @@ package model;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
 import model.db.AbstractDatabase;
 import model.db.MySQLConnector;
 
@@ -14,9 +16,9 @@ public class Priority {
     private int id;
     private String name;
 
-    public Priority (int id, String name){
+    public Priority(int id, String name) {
         this.id = id;
-        this. name = name;
+        this.name = name;
     }
 
     public int getId() {
@@ -62,6 +64,55 @@ public class Priority {
 
 
         return list;
+    }
+
+    public void update() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("UPDATE gr1_PRIORITAET SET NAME = '" + name + "' WHERE prioritaet_id = " + id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void insert() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("INSERT INTO gr1_PRIORITAET (NAME) VALUES ('" + name + "')");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void delete() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("DELETE FROM gr1_PRIORITAET WHERE prioritaet_id = " + id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
 }

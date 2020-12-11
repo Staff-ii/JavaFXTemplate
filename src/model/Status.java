@@ -58,6 +58,55 @@ public class Status {
 
     }
 
+    public void update() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+
+            try {
+                statement = conn.getConnection().prepareStatement("UPDATE gr1_STATUS SET NAME = '"+name+"' WHERE status_id = "+ id);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            try {
+                statement.executeUpdate();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+    }
+
+    public void insert() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("INSERT INTO gr1_STATUS (NAME) VALUES ('"+name+"')");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void delete() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("DELETE FROM gr1_STATUS WHERE status_id = "+ id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 
     @Override
     public String toString() {

@@ -21,76 +21,58 @@ public class StatusController {
     public TextField nameTextField;
     public Status selectedItem = null;
 
-    public void initialize(){
+    public void initialize() {
 
-       statusListView.setItems(Status.getList());
+        statusListView.setItems(Status.getList());
     }
+
     public void itemSelected(MouseEvent mouseEvent) {
 
         Status s = statusListView.getSelectionModel().getSelectedItem();
-        if (s!= null){
+        if (s != null) {
             nameTextField.setText(s.getName());
         }
 
     }
+
     public void cancelClicked(ActionEvent actionEvent) {
         // close Dialog
         Stage stage = (Stage) ((Button) actionEvent.getSource()).getScene().getWindow();
         stage.close();
     }
-    public void saveClicked(ActionEvent actionEvent) {
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345763");
 
+    public void saveClicked(ActionEvent actionEvent) {
         PreparedStatement statement = null;
+        // update existing Item
         if (selectedItem != null) {
             // update existing Item
-            try {
-                statement = conn.getConnection().prepareStatement("UPDATE gr1_priority SET description = '"+selectedItem.getName()+"' WHERE priority_id = "+ selectedItem.getId());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
-                statement.executeUpdate();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        } else {
+            selectedItem.setName(nameTextField.getText());
+            selectedItem.update();
+        } else if (nameTextField.getText().length() > 0) {
             // insert new
-            try {
-                statement = conn.getConnection().prepareStatement("INSERT INTO gr1_priority (description) VALUES ('"+nameTextField.getText()+"')");
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            try {
-                statement.executeUpdate();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            Status s = new Status(0, nameTextField.getText());
+            s.insert();
+            statusListView.getItems().add(s);
+            statusListView.getSelectionModel().selectLast();
+            selectedItem = s;
         }
     }
+
     public void newClicked(ActionEvent actionEvent) {
         selectedItem = null;
         nameTextField.clear();
         statusListView.getSelectionModel().clearSelection();
     }
+
     public void deleteClicked(ActionEvent actionEvent) {
-        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345763");
-
-        if(selectedItem != null) {
+        if (selectedItem != null) {
             // delete Item
+            selectedItem.delete();
+            statusListView.getItems().remove(selectedItem);
 
-            PreparedStatement statement = null;
-            try {
-                statement = conn.getConnection().prepareStatement("DELETE FROM gr1_prioritaet WHERE prioritaet_id = "+ selectedItem.getId());
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
+            selectedItem = null;
+            nameTextField.clear();
 
-            try {
-                statement.executeUpdate();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
         }
     }
 }
