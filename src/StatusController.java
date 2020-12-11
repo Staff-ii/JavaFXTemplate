@@ -31,6 +31,7 @@ public class StatusController {
         Status s = statusListView.getSelectionModel().getSelectedItem();
         if (s != null) {
             nameTextField.setText(s.getName());
+            selectedItem = s;
         }
 
     }
