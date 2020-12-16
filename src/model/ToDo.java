@@ -72,4 +72,57 @@ public class ToDo {
     public String toString() {
         return name;
     }
+
+    // update
+    public void update() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("UPDATE gr1_TODO SET NAME = '" + name + "' WHERE todo_id = " + id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    // delete
+    public void delete() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("DELETE FROM gr1_TODO WHERE todo_id = " + id);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    // insert
+    public void insert() {
+        AbstractDatabase conn = new MySQLConnector("d0345761", "5AHEL2021", "rathgeb.at", 3306, "d0345761");
+
+        PreparedStatement statement = null;
+        try {
+            statement = conn.getConnection().prepareStatement("INSERT INTO gr1_TODO (NAME) VALUES ('" + name + "')");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        try {
+            statement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
 }
